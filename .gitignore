@@ -1,0 +1,13 @@
+obj
+bin
+_ReSharper.*
+*.csproj.user
+*.[Rr]e[Ss]harper.user
+*.[Rr]e[Ss]harper
+*.suo
+*.cache
+*~
+*.pidb
+*.userprefs
+*.docstates
+*.VisualState.xml
