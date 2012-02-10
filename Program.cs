@@ -29,13 +29,8 @@ namespace S3Cmd
             {
                 var conf = ConfigurationManager.AppSettings;
                 using (var s3 = Amazon.AWSClientFactory.CreateAmazonS3Client(conf["AWSAccessKey"], conf["AWSSecretKey"]))
-                {
-                    var req = new PutObjectRequest()
-                        .WithFilePath(filepath)
-                        .WithBucketName(bucket)
-                        .WithKey(key);
-                    using (var resp = s3.PutObject(req)) { }
-                }
+                using (var tu = new Amazon.S3.Transfer.TransferUtility(s3))
+                    tu.Upload(filepath, bucket, key);
                 return 0;
             }
             catch (FileNotFoundException)
